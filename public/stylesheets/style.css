@@ -21,6 +21,10 @@ a {
   .navbar-default .navbar-nav>li>a {
       color: #ECEFF4;
 }
+
+.top{
+  font-size: 10px;
+}
 /*--------------------------------------*/
 
 .jumbotron {
@@ -40,8 +44,16 @@ a {
 /*-----------------------------------------*/
 
 /*Second Container */
-.glyphicon {
+.mid {
 font-size: xx-large;
+}
+
+#about {
+  background-color:
+}
+
+#testimonials {
+  margin-top: 10px;
 }
 
 /*-----------------------------------------*/
@@ -55,3 +67,12 @@ font-size: xx-large;
 
 
 /*SIGN UP.EJS*/
+
+#signupbackground{
+  background-image: url(../images/sign-up-photo.jpg);
+}
+
+
+/*-----------------------------------*/
+
+/*SIGN IN EJS*/

@@ -18,7 +18,10 @@ const ClassSchema = new Schema(
       type: Number
     },
 
-   assignment: [AssignmentModel.schema], //connects to assignment model
+   assignment: {
+      type: [AssignmentModel.schema], //connects to assignment model
+      default: []
+  }
  },
  {
    timestamps: true

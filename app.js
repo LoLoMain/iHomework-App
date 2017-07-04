@@ -6,9 +6,22 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
+const session      = require('express-session'); // NEW
+const passport     = require('passport'); //NEW
+
+//Import "dotenv" package and load variables from the .env file
+// Must be at the top before we try to use the variables
+require('dotenv').config();
 
 
-mongoose.connect('mongodb://localhost/project2');
+//This will change for deployment
+mongoose.connect(process.env.MONGODB_URI);
+
+
+//Run "config/passport-config.js"
+require('./config/passport-config.js');
+
+
 
 const app = express();
 
@@ -19,6 +32,8 @@ app.set('view engine', 'ejs');
 // default value for title local
 app.locals.title = 'iHomework';
 
+//MIDDLEWARES -------------------------------------------------------------
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -28,6 +43,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
+app.use(session({
+  secret: "ihomeworkappsecretstuff",
+  resave: true,
+  saveUninitialized: true
+}));
+// Passport Middleware - MUST come after app.use(session(...));
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Create an additional middleware for user?
+
 
 //ROUTES------------------------------------------------------------------------
 
@@ -36,6 +62,9 @@ app.use('/', index);
 
 const authRoutes = require('./routes/authorization-routes');
 app.use('/', authRoutes);
+
+const userRoutes = require('./routes/user-routes');
+app.use('/', userRoutes);
 
 //------------------------------------------------------------------------------
 

@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-const ClassModel = require ('./class-model.js'); //Require for Classes
-
 const Schema = mongoose.Schema;
 
 
@@ -12,7 +10,7 @@ const UserSchema = new Schema(
     type: String,
     required: [true, 'Please tell us your First Name.'],
     },
-
+    
   username: {
     type: String,
     required: [true, 'Please tell us your Username.'],
@@ -25,16 +23,10 @@ const UserSchema = new Schema(
     required: [true, 'Please provide your birthday'],
     },
 
-   parentPhoneNumber: {type: String},
-
-   classes: [ClassModel.schema],  //connects to class model
-
   // SIGN UP/LOG IN FORM users----------
   encryptedPassword: {
     type: String,
-    required: [true, 'Please provide a password'],
-    min: [5, 'Password cannot be less than 5 Characters'],
-    max: [20, 'Password cannot exceed 20 Characters']
+    required: [true, 'Please provide a password']
   },
 
   //GOOGLE users

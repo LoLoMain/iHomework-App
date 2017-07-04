@@ -1,57 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
     <title><%= title %></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-     crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-  </head>
 
-  <header>
-    <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <!-- CSS -->
+    <link href="theme2/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="theme2/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="theme2/assets/css/main.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#myPage">iHomework</a>
+        <a class="navbar-brand" href="/">iHomework <i class="fa fa-book" aria-hidden="true"></i></a>
       </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">HOME</a></li>
-          <li><a href="/about">ABOUT</a></li>
-          <li><a href="/sign-in">LOG IN</a></li>
+          <li class="active"><a href="/">HOME</a></li>
+          <li><a href="/">ABOUT</a></li>
+          <li><a href="/login">LOG IN</a></li>
           <li><a href="/sign-up">SIGN UP</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></li>
+          <li><a data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fa fa-envelope-o"></i></a></li>
         </ul>
-      </div>
+      </div><!--/.nav-collapse -->
     </div>
-  </nav> 
-  </header>
+  </div>
 
-  <body>
 
     <%- body %>
 
-    <footer>
-      <div class="container-fluid">
-        <div class="row footer">
-          <p>Designed and built for the success of all children.</p>
+    <!-- FOOTER -->
+    <div id="f">
+      <div class="container">
+        <div class="row centered">
+          <a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-dribbble"></i></a>
+          <p> © 2017 iHomework, Inc. · Privacy · Terms ·  Designed and built for the success of all children.</p>
+        </div><!-- row -->
+      </div><!-- container -->
+    </div><!-- Footer -->
 
-          <p> © 2017 iHomework, Inc. · Privacy · Terms </p>
-        </div>
-      </div>
-    </footer>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="theme2/assets/js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -1,5 +1,8 @@
 node_modules
 
+#File that contains environment variables for development (secret credentials we don't want to commit)
+.env
+
 # Logs
 logs
 *.log
@@ -30,3 +33,6 @@ node_modules
 
 # Debug log from npm
 npm-debug.log
+
+
+.DS_Store

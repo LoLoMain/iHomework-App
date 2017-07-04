@@ -1,0 +1,31 @@
+<h2> Add a class </h2>
+
+<form class="" action="/newclass" method="post">
+
+<label for="class-name-input"> Class Name: </label>
+<input id="class-name-input" type="text" name="className">
+<br>                                               <%# req.body.className %>
+
+
+<label for="subject-input"> Subject: </label>
+  <select id="subject-input" name="subjectName"> <%# req.body.subjectName %>
+    <option value="Math">Math</option>
+    <option value="Science">Science</option>
+    <option value="Language Arts">Language Arts</option>
+    <option value="Social Studies">Social Studies</option>
+    <option value="Reading">Reading</option>
+    <option value="Elective">Elective</option>
+  </select>
+<br>
+
+<label for="grade-input"> Grade Level: </label>
+  <select id="grade-input" name="gradeLevel">
+    <option value="6">6th</option>
+    <option value="7">7th</option>
+    <option value="8">8th</option>
+  </select>
+<br>
+
+<button type="submit" name="button"> Add Class</button>
+
+</form>
