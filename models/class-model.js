@@ -21,7 +21,9 @@ const ClassSchema = new Schema(
    assignment: {
       type: [AssignmentModel.schema], //connects to assignment model
       default: []
-  }
+    },
+
+    owner: { type: Schema.Types.ObjectId}
  },
  {
    timestamps: true

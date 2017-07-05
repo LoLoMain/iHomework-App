@@ -32,6 +32,11 @@ app.set('view engine', 'ejs');
 // default value for title local
 app.locals.title = 'iHomework';
 
+const dateFormat = require('dateformat');
+app.locals.prettyDate= (date)=>{
+  return dateFormat(date, "dddd, mmmm dS, yyyy");
+};
+
 //MIDDLEWARES -------------------------------------------------------------
 
 // uncomment after placing your favicon in /public

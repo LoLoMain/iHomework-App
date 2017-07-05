@@ -54,20 +54,69 @@ router.post('/classes/:Id/newassignment', (req, res, next)=>{
 });
 
 //View Assignment Details
-router.get('/classes/:Id/assignmentdetails', (req, res, next)=>{
-  ClassModel.findById(  req.params.Id, //1st Argument -> the Id to find in the DB
+router.get('/classes/:Id/assignmentdetails/:assid', (req, res, next)=>{
+  ClassModel.findById(
+    req.params.Id, //1st Argument -> the Id to find in the DB
+    { assignment: { $elemMatch: { _id: req.params.assid } } },
     (err, ClassInfo)=>{ //2nd Argument -> callback
       if (err){
       next(err);
       return;
       }
+        console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
+        console.log(ClassInfo);
+        console.log('');
         res.locals.ClassInfo = ClassInfo;
         res.render('user-views/assignment-details-view.ejs');
       });
-
 });
 
-
+// // Step 1 UPDATING an ASSIGNMENT
+// router.get('/classes/:Id/assignmentdetails/:assid/edit',(req, res, next)=>{
+//   ClassModel.findById(
+//     req.params.Id, //1st Argument -> the Id to find in the DB
+//     { assignment: { $elemMatch: { _id: req.params.assid } } }, //projection
+//     (err, ClassInfo)=>{ //2nd Argument -> callback
+//       if (err){
+//       next(err);
+//       return;
+//       }
+//         res.locals.ClassInfo = ClassInfo;
+//         res.render('user-views/edit-assignment-view.ejs');
+//   });
+// });
+//
+// // step #2 of form submission for a UPDATING product
+// // a POST verb - that we added in the form
+//
+//
+// router.post('/products/:myId/update',(req,res, next)=>{
+//     ProductModel.findByIdAndUpdate(
+//       req.params.myId,{                 // 1st Argument -> id of document to update
+//
+//       name: req.body.productName,      //2nd Argument -> object of fields to update
+//       price: req.body.productPrice,
+//       imageUrl: req.body.productImageUrl,
+//       description: req.body.productDescription
+//     },
+//
+//     (err, productFromDb) => {         //3rd Argument -> callback!
+//       if (err){
+//         //  If there was an error, use next() to skip to the ERROR PAGE
+//       next(err);
+//       return;
+//       }
+//       //if saved successfully, redirect to a URL /blahblahblah
+//       // Redirect is step #3
+//       // you need to include the ID of the product in the URL
+//       res.redirect('/products/' +productFromDb._id);
+//       // you can ONLY redirect to a URL
+//       }
+//     );
+//   });
+//
+//
+//
 
 
 

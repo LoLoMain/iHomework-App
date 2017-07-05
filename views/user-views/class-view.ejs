@@ -13,6 +13,7 @@
                   <li><a href="#">Calendar</a></li>
                   <li><a href="#">Classmates</a></li>
                   <li><a href="#">Events</a></li>
+                  <li><a href="/profile">Back to Home </a></li>
               </ul>
             </div> <!--row -->
         </div> <!-- div class "well" -->
@@ -28,14 +29,16 @@
                <ul>
 
                  <% ClassInfo.assignment.forEach((assignment)=>{ %>
-                   <a href="/classes/<%= ClassInfo._id %>/assignmentdetails">
+                   <a href="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id%>">
                    <li> <%= assignment.assignmentName %> </a></li>
                  <% }); %>
                </ul>
 
-               <form method="post" action="classes/<%= ClassInfo._id %>/delete">
+               <form method="post" action="/classes/<%= ClassInfo._id %>/delete">
                   <button> Remove Class</button>
                 </form>
+
+
                <button type="button" name="button">
                  <a href="/classes/<%= ClassInfo._id %>/newassignment" class="pricing-signup">Add an Assignment</a>
                </button>
