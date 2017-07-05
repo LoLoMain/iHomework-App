@@ -66,6 +66,9 @@ app.use('/', authRoutes);
 const userRoutes = require('./routes/user-routes');
 app.use('/', userRoutes);
 
+const assignmentRoutes = require('./routes/assignment-routes');
+app.use('/', assignmentRoutes);
+
 //------------------------------------------------------------------------------
 
 // catch 404 and forward to error handler

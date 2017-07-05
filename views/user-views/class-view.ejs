@@ -1,0 +1,47 @@
+
+<div id="dg">
+  <div class="container">
+    <div class="row centered">
+      <h2>Welcome NameVariableGoesHERE</h2>
+      <br>
+
+      <div class="col-md-4">
+        <div class="well"> <!--Side Bar Well -->
+            <h4>My Stuff</h4>
+            <div class="row">
+              <ul class="list-unstyled">
+                  <li><a href="#">Calendar</a></li>
+                  <li><a href="#">Classmates</a></li>
+                  <li><a href="#">Events</a></li>
+              </ul>
+            </div> <!--row -->
+        </div> <!-- div class "well" -->
+      </div><!-- div class "col-md-4" -->
+
+
+       <div class="col-md-8">
+          <div class="pricing-option"> <!-- INDIVIDUAL CLASS/CLASS INFO TABLE -->
+              <div class="pricing-top">
+                  <span class="pricing-edition"> <%= ClassInfo.className %> </span>
+              </div>
+                    <%# For each Loop to display list of all assignments %>
+               <ul>
+                 <% ClassInfo.assignments.forEach((assignment)=>{ %>
+                   <li> <%= ClassInfo.assignment.assignmentName %></li>
+                 <% }); %>
+
+               </ul>
+
+               <form method="post" action="products/<%= ClassInfo._id %>/delete">
+                  <button> Remove Class</button>
+                </form>
+               <button type="button" name="button">
+                 <a href="/classes/<%= ClassInfo._id %>/newassignment" class="pricing-signup">Add an Assignment</a>
+               </button>
+
+          </div><!-- div pricing-option -->
+        </div><!-- div class "col-md-8" -->
+
+   </div><!-- row centered -->
+ </div><!-- container -->
+</div><!-- DG -->

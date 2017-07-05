@@ -6,10 +6,8 @@ const ClassModel = require('../models/class-model.js');
 const AssignmentModel = require('../models/assignment-model.js');
 
 
-// router.get('/profile',(req,res, next)=>{
-//   res.render('user-views/user-home-view.ejs');
-// });
 
+//LOGGED IN USER PROFILE VIEW
 router.get('/profile', (req,res,next)=>{
   ClassModel.find((err, classList) => {
     if (err){
@@ -18,18 +16,21 @@ router.get('/profile', (req,res,next)=>{
     }
 
     res.locals.classList = classList;
-    res.render('user-views/user-home-view.ejs');
+    res.render('user-views/user-profile-view.ejs');
   });
 });
 
 
 
 //CLASSES ----------------------------------------------------------
-//Add a class
+
+//ADD A CLASS
+//Step 1
 router.get('/newclass',(req,res, next)=>{
   res.render('user-views/new-class-view.ejs');
 });
 
+//Step 2
 router.post('/newclass',(req,res, next)=>{
     const addedClass= new ClassModel({
       className: req.body.className,
@@ -37,7 +38,7 @@ router.post('/newclass',(req,res, next)=>{
       gradeLevel: req.body.gradeLevel,
     });
 
-  // SAVE to DATABASE
+     // SAVE to DATABASE
     addedClass.save((err)=>{
       // If there was an error that was NOT a validation error...
       if (err && addedClass.errors === undefined){
@@ -48,41 +49,46 @@ router.post('/newclass',(req,res, next)=>{
       // If there was error and THERE WERE valiation errors
       if(err && addedClass.errors){
         // Create view variables with the error messages
-        res.locals.nameValidationError = addedProduct.errors.name;
-        res.locals.priceValidationError = addedProduct.errors.price;
-        // and display the form again
-        res.render('product-views/new-product-view.ejs');
+        res.locals.nameValidationError = addedClass.errors.className;
+       //Display form to correct errors
+        res.render('user-views/new-class-view.ejs');
         return;
       }
-      //if saved successfully, redirect to a URL /blahblahblah
-      // Redirect is step #3
+      //Step 3 - Save successful
       res.redirect('/profile');
-      // you can ONLY redirect to a URL
-      //  If you don't redirect, you can refresh and dublicate data! Oh No!
-      // you render a view
     });
   });
 
-//------------------------------------------------------------------
 
-router.get('/classes/:myId',(req,res,next)=>{
-  // from products-list-view.ejs
-  // <a href="/products/details?myId=<%= oneProduct._id %>">
-  //  /products/details?myId=5951744067310a0e67d4934c"
-    ProductModel.findById(
-      req.params.myId, //1st Argument -> the Id to find in the DB
-      (err, productFromDb)=>{ //2nd Argument -> callback
+// VIEW INDIVIDUAL CLASS Information
+router.get('/classes/:Id', (req,res,next)=>{
+    ClassModel.findById(
+      req.params.Id, //1st Argument -> the Id to find in the DB
+      (err, ClassInfo)=>{ //2nd Argument -> callback
         if (err){
-          //  If there was an error, use next() to skip to the ERROR PAGE
         next(err);
         return;
         }
-        // res.locals.productDetails = theProduct; other possibility
-        res.render('product-views/product-details-view.ejs',
-        { productDetails: productFromDb});
+        res.locals.ClassInfo = ClassInfo;
+        res.render('user-views/class-view.ejs');
       }
     );
 });
 
+// DELETE A CLASS
+router.post('/classes/:Id/removeclass', (req,res,next)=>{
+  ClassModel.findByIdAndRemove(
+    req.params.Id,                  // 1st Argument -> id of Class to delete
 
+    (err, ClassInfo) => {         //2nd Argument -> callback!
+      if (err){
+      next(err);
+      return;
+      }
+      // Removed successfully
+      res.redirect('/profile');
+    }
+  );
+});
+//------------------------------------------------------------------
 module.exports = router;

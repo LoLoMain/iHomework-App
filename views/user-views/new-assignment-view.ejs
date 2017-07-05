@@ -1,0 +1,37 @@
+<h2>New Assignment for <%= ClassInfo.className %>  </h2>
+
+
+<form action="/classes/<%= ClassInfo._id %>/newassignment" method="post">
+
+  <label for="assignment-name-input">Assignment Title: </label>
+  <input id="assignment-name-input" type="text" name="assignmentName">
+  <br>
+
+  <label for="date-assigned-input">Date Assigned:</label>
+  <input id="date-assigned-input" type="date" name="dateAssigned">
+  <br>
+
+
+  <label for="date-due-input">Date Due:</label>
+  <input id="date-due-input" type="date" name="dateDue">
+  <br>
+
+  <label for="assignment-type-input"> Assignment Type:</label>
+  <select id="assignment-type-input" name="assignmentType">
+    <option value="Homework">Homework</option>
+    <option value="Project">Project</option>
+    <option value="Quiz">Quiz</option>
+    <option value="Test">Test</option>
+    <option value="Essay">Essay</option>
+    <option value="Other">Other</option>
+  </select>
+  <br>
+
+  <label for="assignment-description-input"> Description:</label>
+  <textarea id="assignment-description-input" type="text" name="assignmentDescription"></textarea>
+  <br>
+
+  <button type="submit" name="button"> Add Assignment </button>
+</form>
+
+<%# add class name to new assignment and add assignment button%>

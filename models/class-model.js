@@ -30,6 +30,5 @@ const ClassSchema = new Schema(
 );
 
   const ClassModel = mongoose.model ('Class', ClassSchema);
-  // db.classes.find() ??????
 
   module.exports = ClassModel;

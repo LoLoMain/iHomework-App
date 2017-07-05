@@ -1,0 +1,47 @@
+
+<div id="dg">
+  <div class="container">
+    <div class="row centered">
+      <h2>Welcome NameVariableGoesHERE</h2>
+      <br>
+
+      <div class="col-md-4">
+          <div class="well"> <!--Side Bar -->
+              <h4>My Stuff</h4>
+              <div class="row">
+                <ul class="list-unstyled">
+                    <li><a href="#">Calendar</a></li>
+                    <li><a href="#">Classmates</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+              </div> <!-- /.row -->
+          </div> <!-- div class "well" -->
+      </div> <!-- div class "col-md-4" -->
+
+
+      <div class="col-md-8">
+        <div class="pricing-option"> <!-- LIST OF ALL CLASSES TABLE -->
+            <div class="pricing-top">
+                <span class="pricing-edition">myClasses</span>
+                <span class="price"></span>
+            </div>
+            <ul>
+
+              <% classList.forEach((oneClass) => { %>
+                <a href ="/classes/<%=oneClass._id%>">
+                <li> <%= oneClass.className %> </li> </a> 
+              <%  }); %>
+
+            </ul>
+            <a href="/newclass" class="pricing-signup">Add a Class</a>
+        </div><!-- /pricing-option -->
+      </div> <!-- div class "col-md-8" -->
+
+   </div><!-- row centered -->
+ </div><!-- container -->
+</div><!-- DG -->
+
+
+
+<%# Add Icon below for each class %>
+<%# <i class="fa fa-plus" aria-hidden="true"></i>%>
