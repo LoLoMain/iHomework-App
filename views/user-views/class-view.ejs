@@ -26,13 +26,14 @@
               </div>
                     <%# For each Loop to display list of all assignments %>
                <ul>
-                 <% ClassInfo.assignments.forEach((assignment)=>{ %>
-                   <li> <%= ClassInfo.assignment.assignmentName %></li>
-                 <% }); %>
 
+                 <% ClassInfo.assignment.forEach((assignment)=>{ %>
+                   <a href="/classes/<%= ClassInfo._id %>/assignmentdetails">
+                   <li> <%= assignment.assignmentName %> </a></li>
+                 <% }); %>
                </ul>
 
-               <form method="post" action="products/<%= ClassInfo._id %>/delete">
+               <form method="post" action="classes/<%= ClassInfo._id %>/delete">
                   <button> Remove Class</button>
                 </form>
                <button type="button" name="button">

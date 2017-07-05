@@ -53,6 +53,21 @@ router.post('/classes/:Id/newassignment', (req, res, next)=>{
     );
 });
 
+//View Assignment Details
+router.get('/classes/:Id/assignmentdetails', (req, res, next)=>{
+  ClassModel.findById(  req.params.Id, //1st Argument -> the Id to find in the DB
+    (err, ClassInfo)=>{ //2nd Argument -> callback
+      if (err){
+      next(err);
+      return;
+      }
+        res.locals.ClassInfo = ClassInfo;
+        res.render('user-views/assignment-details-view.ejs');
+      });
+
+});
+
+
 
 
 

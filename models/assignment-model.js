@@ -16,9 +16,7 @@ const AssignmentSchema = new Schema({
     required: [true, 'When is the assignment due?']
     },
   assignmentType: {
-      enum: ['Homework', 'Project','Quiz', 'Test', 'Essay', 'Other']
-      // category field can only be one of the specified field above
-      //drop down menu?
+      type: String,
     },
   description: { type: String},
 },

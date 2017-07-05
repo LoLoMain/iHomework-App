@@ -1,0 +1,12 @@
+
+
+
+<ul>
+  <% ClassInfo.assignment.forEach((assignment)=>{ %>
+
+    <li> Date Assigned: <%= assignment.dateAssigned %></li>
+    <li> Date Due: <%= assignment.dateDue %></li>
+    <li> Assignment Type: <%= assignment.assignmentType %></li>
+    <li> Assignment description: <%= assignment.description %></li>
+  <% }); %>
+</ul>
