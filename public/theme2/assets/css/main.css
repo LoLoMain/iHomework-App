@@ -16,8 +16,8 @@
 body {
   background-color: #f2f2f2;
     font-family: "Lato";
-    font-weight: 300;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 20px;
     color: #555;
 
     -webkit-font-smoothing: antialiased;
@@ -29,8 +29,8 @@ body {
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
     font-family: "Raleway";
-    font-weight: 300;
-    color: #333;
+    font-weight: 400;
+    color: #1abc9c;
 }
 
 
@@ -46,7 +46,7 @@ p {
 
 /* Links */
 a {
-    color: #f85c37;
+    color: ##ff7878;
     word-wrap: break-word;
 
     -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -173,10 +173,20 @@ a:after {
 
 /* Dark Grey Wrap */
 #dg {
-	background: #e0e0e0;
+	/*background: #e0e0e0;*/
+  background-image: url(../img/booksdoodle.jpg);
+  background-repeat: no-repeat
 	padding-top: 70px;
 	padding-bottom: 70px;
 	text-align: center;
+}
+
+#form-info{
+  background-image: url(../../../images/sign-up-photo.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+	padding-top: 70px;
+	padding-bottom: 70px;
 }
 
 #dg h4 {
@@ -227,6 +237,7 @@ a:after {
 
 #blue p {
 	color: white;
+  font-weight: 400;
 }
 
 
@@ -283,7 +294,7 @@ a:after {
 
 .desc i {
 	color: #ff7878;
-	font-size: 12px;
+	font-size: 25px;
 	padding: 5px;
 }
 

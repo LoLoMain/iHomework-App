@@ -1,19 +1,30 @@
-
-
 <br>
 <br>
-<br>
-<br>
-<a href="/profile"> Back to Home</a>
 
-<ul>
-  <% ClassInfo.assignment.forEach((assignment)=>{ %>
+<div id="dg">
+  <div class="container">
+    <div class="row centered">
 
-    <li> Date Assigned: <%= prettyDate(assignment.dateAssigned) %></li>
-    <li> Date Due: <%= prettyDate(assignment.dateDue) %></li>
-    <li> Assignment Type: <%= assignment.assignmentType %></li>
-    <li> Assignment description: <%= assignment.description %></li>
-    <a href="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id%>/edit">Edit Assignment</a>
-    <a href="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id%>/delete">Delete Assignment</a>
-  <% }); %>
-</ul>
+      <div class="col-md-8">
+        <div class="pricing-option"> <!-- LIST OF ALL CLASSES TABLE -->
+            <div class="pricing-top">
+                <span class="pricing-edition">myAssignments</span>
+                <span class="price"><a href="/profile"> Back to Home</a> </span>
+            </div>
+            <ul style="list-style: none">
+              <% ClassInfo.assignment.forEach((assignment)=>{ %>
+
+                <li> Date Assigned: <%= prettyDate(assignment.dateAssigned) %></li>
+                <li> Date Due: <%= prettyDate(assignment.dateDue) %></li>
+                <li> Assignment Type: <%= assignment.assignmentType %></li>
+                <li> Assignment description: <%= assignment.description %></li>
+                <a href="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id%>/edit">Edit Assignment</a>
+                <a href="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id%>/delete">Delete Assignment</a>
+              <% }); %>
+            </ul>
+            <a href="/newclass" class="pricing-signup">Add a Class</a>
+        </div><!-- /pricing-option -->
+      </div> <!-- div class "col-md-8" -->
+    </div><!-- row centered -->
+  </div><!-- container -->
+</div><!-- DG -->

@@ -76,7 +76,7 @@ router.get('/classes/:Id', (req,res,next)=>{
 });
 
 // DELETE A CLASS
-router.post('/classes/:Id/delete', (req,res,next)=>{
+router.get('/classes/:Id/delete', (req,res,next)=>{
   ClassModel.findByIdAndRemove(
     req.params.Id,                  // 1st Argument -> id of Class to delete
 
