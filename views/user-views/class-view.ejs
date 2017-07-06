@@ -32,7 +32,7 @@
 
                  <% ClassInfo.assignment.forEach((assignment)=>{ %>
                    <a href="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id%>">
-                   <li> <%= assignment.assignmentName %> </a></li>
+                   <li> <%= assignment.assignmentName %>, Due: <%= prettyDate(assignment.dateDue)  %> </a></li>
                  <% }); %>
 
 
