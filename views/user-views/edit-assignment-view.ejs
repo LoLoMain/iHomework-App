@@ -3,23 +3,26 @@
   <div class="row" style="margin:60px">
       <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 
-        <form action="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=ClassInfo.assignment[0]._id %>/edit" method="post">
+        <form action="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id %>/edit" method="post">
           <fieldset>
           <h2>Edit Assignment for <%= ClassInfo.className %> </h2>
 
           <div class="form-group">
            <label for="assignment-name-input">Assignment Title: </label>
-            <input id="assignment-name-input" class="form-control input-lg" type="text" name="assignmentName">
+            <input id="assignment-name-input" class="form-control input-lg" type="text"
+                name="assignmentName" value="<%= assignment.assignmentName %>">
           </div>
 
           <div class="form-group">
             <label for="date-assigned-input">Date Assigned:</label>
-            <input id="date-assigned-input" class="form-control input-lg" type="date" name="dateAssigned">
+            <input id="date-assigned-input" class="form-control input-lg" type="date"
+             name="dateAssigned" value="<%= assignment.dateAssigned %>">
           </div>
 
           <div class="form-group">
             <label for="date-due-input">Date Due:</label>
-            <input id="date-due-input" class="form-control input-lg" type="date" name="dateDue">
+            <input id="date-due-input" class="form-control input-lg" type="date"
+             name="dateDue" value="<%= assignment.dateDue %>">
           </div>
 
           <div class="form-group">
@@ -36,10 +39,13 @@
 
           <div class="form-group">
             <label for="assignment-description-input"> Description:</label>
-            <textarea id="assignment-description-input"class="form-control input-lg" type="text" name="assignmentDescription"></textarea>
+            <textarea id="assignment-description-input"class="form-control input-lg" type="text" name="assignmentDescription">
+              <%= assignment.description %>
+            </textarea>
           </div>
 
             <button type="submit" class="btn btn-lg btn-success btn-block" name="button"> Update Assignment </button>
+            <button type="submit" class="btn btn-lg btn-danger btn-block" name="button"> <a href="/profile"> Cancel </a> </button>
           </fieldset>
         </form>
       </div>

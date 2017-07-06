@@ -57,7 +57,14 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Create an additional middleware for user?
+// Middleware to create the "currentUser" variable
+app.use((req,res,next)=>{
+  //Check if the user IS logged in
+  if(req.user){
+    res.locals.currentUser = req.user;
+  }
+  next();
+});
 
 
 //ROUTES------------------------------------------------------------------------

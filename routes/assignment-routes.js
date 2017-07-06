@@ -64,8 +64,6 @@ router.get('/classes/:Id/assignmentdetails/:assid', (req, res, next)=>{
       return;
       }
         console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
-        console.log(ClassInfo);
-        console.log('');
         res.locals.ClassInfo = ClassInfo;
         res.render('user-views/assignment-details-view.ejs');
       });
@@ -82,10 +80,7 @@ router.get('/classes/:Id/assignmentdetails/:assid/edit',(req, res, next)=>{
       return;
       }
         res.locals.ClassInfo = ClassInfo;
-        console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
-        console.log(ClassInfo);
-        console.log('');
-        res.locals.assignment = req.params.assid;
+        res.locals.assignment = ClassInfo.assignment[0];
 
         res.render('user-views/edit-assignment-view.ejs');
   });
@@ -94,32 +89,24 @@ router.get('/classes/:Id/assignmentdetails/:assid/edit',(req, res, next)=>{
 // Step 2 UPDATING an ASSIGNMENT
 
 router.post('/classes/:Id/assignmentdetails/:assid/edit',(req,res, next)=>{
-    console.log('');
-    console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
-    console.log(req);
-    console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
-    console.log(req.body);
-    ClassModel.findByIdAndUpdate(
-      req.params.Id,            // 1st Argument -> id of document to update
-      { assignment: { $elemMatch: { _id: req.params.assid } } }, //projection
+    ClassModel.findOneAndUpdate(
+      { _id: req.params.Id, 'assignment._id': req.params.assid }, //projection
 
       {      //2nd Argument -> object of fields to update
-        assignmentName: req.body.assignmentName,
-        dateAssigned: req.body.dateAssigned,
-        dateDue: req.body.dateDue,
-        assignmentType: req.body.assignmentType,
-        description: req.body.assignmentDescription
-    },
+        'assignment.$.assignmentName': req.body.assignmentName,
+        'assignment.$.dateAssigned': req.body.dateAssigned,
+        'assignment.$.dateDue': req.body.dateDue,
+        'assignment.$.assignmentType': req.body.assignmentType,
+        'assignment.$.description': req.body.assignmentDescription
+          //        |
+          // dollar sign means "the ones you matched in the criteria"
+      },
 
     (err, ClassInfo) => {         //3rd Argument -> callback!
       if (err){
       next(err);
       return;
       }
-
-      console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
-      console.log(ClassInfo);
-
       //Update Successful - Redirect to Class Page
       res.redirect('/classes/' +  ClassInfo._id);
       // you can ONLY redirect to a URL
@@ -127,11 +114,11 @@ router.post('/classes/:Id/assignmentdetails/:assid/edit',(req,res, next)=>{
     );
   });
 
-
-  // DELETE AN ASSIGNMENT
-  router.post('/classes/:Id/delete', (req,res,next)=>{
-    ClassModel.findByIdAndRemove(
+  // DELETE AN ASSIGNMENT  - Mongoose pull object from an array
+  router.post('/classes/:Id/assignmentdetails/:assid/delete', (req,res,next)=>{
+    ClassModel.findOneAndRemove(
       req.params.Id,                  // 1st Argument -> id of Class to delete
+      { $pull: { 'assignment._id' : assid } },
 
       (err, ClassInfo) => {         //2nd Argument -> callback!
         if (err){
