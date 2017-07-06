@@ -71,54 +71,79 @@ router.get('/classes/:Id/assignmentdetails/:assid', (req, res, next)=>{
       });
 });
 
-// // Step 1 UPDATING an ASSIGNMENT
-// router.get('/classes/:Id/assignmentdetails/:assid/edit',(req, res, next)=>{
-//   ClassModel.findById(
-//     req.params.Id, //1st Argument -> the Id to find in the DB
-//     { assignment: { $elemMatch: { _id: req.params.assid } } }, //projection
-//     (err, ClassInfo)=>{ //2nd Argument -> callback
-//       if (err){
-//       next(err);
-//       return;
-//       }
-//         res.locals.ClassInfo = ClassInfo;
-//         res.render('user-views/edit-assignment-view.ejs');
-//   });
-// });
-//
-// // step #2 of form submission for a UPDATING product
-// // a POST verb - that we added in the form
-//
-//
-// router.post('/products/:myId/update',(req,res, next)=>{
-//     ProductModel.findByIdAndUpdate(
-//       req.params.myId,{                 // 1st Argument -> id of document to update
-//
-//       name: req.body.productName,      //2nd Argument -> object of fields to update
-//       price: req.body.productPrice,
-//       imageUrl: req.body.productImageUrl,
-//       description: req.body.productDescription
-//     },
-//
-//     (err, productFromDb) => {         //3rd Argument -> callback!
-//       if (err){
-//         //  If there was an error, use next() to skip to the ERROR PAGE
-//       next(err);
-//       return;
-//       }
-//       //if saved successfully, redirect to a URL /blahblahblah
-//       // Redirect is step #3
-//       // you need to include the ID of the product in the URL
-//       res.redirect('/products/' +productFromDb._id);
-//       // you can ONLY redirect to a URL
-//       }
-//     );
-//   });
-//
-//
-//
+// Step 1 UPDATING an ASSIGNMENT
+router.get('/classes/:Id/assignmentdetails/:assid/edit',(req, res, next)=>{
+  ClassModel.findById(
+    req.params.Id, //1st Argument -> the Id to find in the DB
+    { assignment: { $elemMatch: { _id: req.params.assid } } }, //projection
+    (err, ClassInfo)=>{ //2nd Argument -> callback
+      if (err){
+      next(err);
+      return;
+      }
+        res.locals.ClassInfo = ClassInfo;
+        console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
+        console.log(ClassInfo);
+        console.log('');
+        res.locals.assignment = req.params.assid;
+
+        res.render('user-views/edit-assignment-view.ejs');
+  });
+});
+
+// Step 2 UPDATING an ASSIGNMENT
+
+router.post('/classes/:Id/assignmentdetails/:assid/edit',(req,res, next)=>{
+    console.log('');
+    console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
+    console.log(req);
+    console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
+    console.log(req.body);
+    ClassModel.findByIdAndUpdate(
+      req.params.Id,            // 1st Argument -> id of document to update
+      { assignment: { $elemMatch: { _id: req.params.assid } } }, //projection
+
+      {      //2nd Argument -> object of fields to update
+        assignmentName: req.body.assignmentName,
+        dateAssigned: req.body.dateAssigned,
+        dateDue: req.body.dateDue,
+        assignmentType: req.body.assignmentType,
+        description: req.body.assignmentDescription
+    },
+
+    (err, ClassInfo) => {         //3rd Argument -> callback!
+      if (err){
+      next(err);
+      return;
+      }
+
+      console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
+      console.log(ClassInfo);
+
+      //Update Successful - Redirect to Class Page
+      res.redirect('/classes/' +  ClassInfo._id);
+      // you can ONLY redirect to a URL
+      }
+    );
+  });
 
 
+  // DELETE AN ASSIGNMENT
+  router.post('/classes/:Id/delete', (req,res,next)=>{
+    ClassModel.findByIdAndRemove(
+      req.params.Id,                  // 1st Argument -> id of Class to delete
+
+      (err, ClassInfo) => {         //2nd Argument -> callback!
+        if (err){
+        next(err);
+        return;
+        }
+        // Removed successfully
+        res.locals.ClassInfo = ClassInfo;
+        res.redirect('/profile');
+      }
+    );
+  });
 
 
 module.exports = router;

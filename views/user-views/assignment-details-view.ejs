@@ -4,6 +4,7 @@
 <br>
 <br>
 <br>
+<a href="/profile"> Back to Home</a>
 
 <ul>
   <% ClassInfo.assignment.forEach((assignment)=>{ %>
@@ -12,5 +13,7 @@
     <li> Date Due: <%= prettyDate(assignment.dateDue) %></li>
     <li> Assignment Type: <%= assignment.assignmentType %></li>
     <li> Assignment description: <%= assignment.description %></li>
+    <a href="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id%>/edit">Edit Assignment</a>
+    <a href="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id%>/delete">Delete Assignment</a>
   <% }); %>
 </ul>

@@ -1,37 +1,47 @@
-<h2>New Assignment for <%= ClassInfo.className %>  </h2>
+<div class="container">
 
+  <div class="row" style="margin:60px">
+      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 
-<form action="/classes/<%= ClassInfo._id %>/newassignment" method="post">
+        <form action="/classes/<%= ClassInfo._id %>/newassignment" method="post">
+          <fieldset>
+          <h2>Create Assignment for <%= ClassInfo.className %> </h2>
 
-  <label for="assignment-name-input">Assignment Title: </label>
-  <input id="assignment-name-input" type="text" name="assignmentName">
-  <br>
+          <div class="form-group">
+           <label for="assignment-name-input">Assignment Title: </label>
+            <input id="assignment-name-input" class="form-control input-lg" type="text" name="assignmentName">
+          </div>
 
-  <label for="date-assigned-input">Date Assigned:</label>
-  <input id="date-assigned-input" type="date" name="dateAssigned">
-  <br>
+          <div class="form-group">
+            <label for="date-assigned-input">Date Assigned:</label>
+            <input id="date-assigned-input" class="form-control input-lg" type="date" name="dateAssigned">
+          </div>
 
+          <div class="form-group">
+            <label for="date-due-input">Date Due:</label>
+            <input id="date-due-input" class="form-control input-lg" type="date" name="dateDue">
+          </div>
 
-  <label for="date-due-input">Date Due:</label>
-  <input id="date-due-input" type="date" name="dateDue">
-  <br>
+          <div class="form-group">
+            <label for="assignment-type-input"> Assignment Type:</label>
+            <select id="assignment-type-input" class="form-control input-lg" name="assignmentType">
+              <option value="Homework">Homework</option>
+              <option value="Project">Project</option>
+              <option value="Quiz">Quiz</option>
+              <option value="Test">Test</option>
+              <option value="Essay">Essay</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-  <label for="assignment-type-input"> Assignment Type:</label>
-  <select id="assignment-type-input" name="assignmentType">
-    <option value="Homework">Homework</option>
-    <option value="Project">Project</option>
-    <option value="Quiz">Quiz</option>
-    <option value="Test">Test</option>
-    <option value="Essay">Essay</option>
-    <option value="Other">Other</option>
-  </select>
-  <br>
+          <div class="form-group">
+            <label for="assignment-description-input"> Description:</label>
+            <textarea id="assignment-description-input"class="form-control input-lg" type="text" name="assignmentDescription"></textarea>
+          </div>
 
-  <label for="assignment-description-input"> Description:</label>
-  <textarea id="assignment-description-input" type="text" name="assignmentDescription"></textarea>
-  <br>
-
-  <button type="submit" name="button"> Add Assignment </button>
-</form>
-
-<%# add class name to new assignment and add assignment button%>
+            <button type="submit" class="btn btn-lg btn-success btn-block" name="button"> Update Assignment </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
