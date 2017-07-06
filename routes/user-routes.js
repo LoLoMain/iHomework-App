@@ -9,6 +9,10 @@ const AssignmentModel = require('../models/assignment-model.js');
 
 //LOGGED IN USER PROFILE VIEW
 router.get('/profile', (req,res,next)=>{
+  if(!req.isAuthenticated()) {
+    res.redirect('/login');
+    return;
+  }
   ClassModel.find((err, classList) => {
     if (err){
     next(err);

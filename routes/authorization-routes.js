@@ -46,7 +46,7 @@ router.post('/sign-up', (req, res, next)=>{
              return;
            }
            // if save/registration is successful - REDIRECT to WELCOME SCREEN
-           res.redirect('/profile');
+           res.redirect('/login');
          });
        }
      );
