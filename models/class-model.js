@@ -22,11 +22,11 @@ const ClassSchema = new Schema(
       type: [AssignmentModel.schema], //connects to assignment model
       default: []
     },
-    // 
-    // teacher: {
-    //   type: String,
-    //   required: [true, 'What is the name of the teacher?'],
-    // },
+    
+    teacher: {
+      type: String,
+      required: [true, 'What is the name of the teacher?'],
+    },
 
     owner: { type: Schema.Types.ObjectId}
  },

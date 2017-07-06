@@ -40,6 +40,7 @@ router.post('/newclass',(req,res, next)=>{
       className: req.body.className,
       subject: req.body.subjectName,
       gradeLevel: req.body.gradeLevel,
+      teacher: req.body.teacherName
     });
 
      // SAVE to DATABASE
