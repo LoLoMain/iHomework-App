@@ -10,12 +10,12 @@
         <div class="well"> <!--Side Bar Well -->
             <h3>Welcome <%= currentUser.firstName %> !</h3>
             <div class="row">
-              <img src="/theme2/assets/img/pic4.jpg" alt="ProfilePic" class="img-circle">
+              <img src="/theme2/assets/img/confused.png" alt="ProfilePic" class="img-circle">
               <ul class="list-unstyled">
                   <li><a href="#">Calendar</a></li>
                   <li><a href="#">Classmates</a></li>
                   <li><a href="#">Events</a></li>
-                  <li><a href="/profile">Back to Home </a></li>
+                  <li><a href="/profile">Back to myClasses </a></li>
               </ul>
             </div> <!--row -->
         </div> <!-- div class "well" -->
@@ -31,11 +31,14 @@
                <ul>
 
                  <% ClassInfo.assignment.forEach((assignment)=>{ %>
+                   <% let assignmentClass = "normal" %>
+                   <% (assignment.isImportant) ? assignmentClass = "important" : assignmentClass = "normal" %>
                    <a href="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id%>">
-                   <li id="assignment-importance"> <%= assignment.assignmentName %>, Due: <%= prettyDate(assignment.dateDue) %>
+                   <li class="<%= assignmentClass %>"> <%= assignment.assignmentName %>, Due: <%= prettyDate(assignment.dateDue) %>
                     <i id="move" class="fa fa-pencil" aria-hidden="true"></i>
                    </a></li>
-                 <% }); %>
+
+                <% }); %>
 
 
               </ul>
