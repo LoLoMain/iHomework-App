@@ -19,6 +19,11 @@ const AssignmentSchema = new Schema({
       type: String,
     },
   description: { type: String},
+
+  isImportant:{
+    type: Boolean,
+    default: false
+  }
 },
 {
   timestamps: true

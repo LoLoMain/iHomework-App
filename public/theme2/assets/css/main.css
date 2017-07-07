@@ -426,3 +426,7 @@ a:after {
 .pricing-option .pricing-signup:hover {
     background: #ff7878;
 }
+
+#move{
+  margin-left: 20px;
+}

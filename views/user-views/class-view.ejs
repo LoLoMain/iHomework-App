@@ -32,7 +32,9 @@
 
                  <% ClassInfo.assignment.forEach((assignment)=>{ %>
                    <a href="/classes/<%= ClassInfo._id %>/assignmentdetails/<%=assignment._id%>">
-                   <li> <%= assignment.assignmentName %>, Due: <%= prettyDate(assignment.dateDue)  %> </a></li>
+                   <li id="assignment-importance"> <%= assignment.assignmentName %>, Due: <%= prettyDate(assignment.dateDue) %>
+                    <i id="move" class="fa fa-pencil" aria-hidden="true"></i>
+                   </a></li>
                  <% }); %>
 
 

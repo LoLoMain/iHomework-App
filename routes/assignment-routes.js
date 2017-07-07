@@ -51,10 +51,14 @@ router.post('/classes/:Id/newassignment', (req, res, next)=>{
           dateAssigned: req.body.dateAssigned,
           dateDue: req.body.dateDue,
           assignmentType: req.body.assignmentType,
-          description: req.body.assignmentDescription
+          description: req.body.assignmentDescription,
+          isImportant: req.body.assignmentImportance
 
         });
 
+        console.log('🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐');
+        console.log(newAssignment);
+        
         // Adding the Assignment to assignment array in class model
         ClassInfo.assignment.push(newAssignment);
         // Save Class with New Assignment

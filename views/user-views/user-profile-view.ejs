@@ -32,7 +32,8 @@
 
               <% classList.forEach((oneClass) => { %>
                 <a href ="/classes/<%=oneClass._id%>">
-                <li> <%= oneClass.className %> : <%=oneClass.teacher %> </li> </a> 
+                <li> <%= oneClass.className %> : <%=oneClass.teacher %><i id="move" class="fa fa-pencil" aria-hidden="true"></i></li>
+                </a> 
               <%  }); %>
 
             </ul>
