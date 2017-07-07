@@ -1,4 +1,5 @@
 const express = require('express');
+// const client  = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 const router  = express.Router();
 
@@ -20,6 +21,21 @@ router.get('/classes/:Id/newassignment', (req, res, next)=>{
       });
 
 });
+
+// router.get('/testtwilio', (req, res, next)=>{
+//   client.sendMessage({
+//     to: '+19736400894',
+//     from: 'TWILIO_PHONE_NUMBER',
+//     body: 'hello world!'
+//   },
+//   (err, message)=> {
+//     if (err){
+//     console.log(message.sid);
+//     next(err);
+//     return;
+//     }
+//   });
+// });
 
 // ROUTE #2 -> receive that form submission and do database stuff
 router.post('/classes/:Id/newassignment', (req, res, next)=>{

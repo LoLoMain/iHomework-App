@@ -8,6 +8,7 @@ const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 const session      = require('express-session'); // NEW
 const passport     = require('passport'); //NEW
+// const client       = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 //Import "dotenv" package and load variables from the .env file
 // Must be at the top before we try to use the variables
