@@ -6,8 +6,6 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-
-
 // router.get('/profile', (req,res, next)=>{
 //   if(req.user){
 //   res.render('user-views/user-profile-view.ejs');

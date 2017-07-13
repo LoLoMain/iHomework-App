@@ -7,7 +7,7 @@ a {
   color: #00B7FF;
 }
 
-/*INDEX.EJS*/
+/*INDEX.EJS------------------*/
 
 /*Nav Bar*/
 .navbar-default{
@@ -25,7 +25,8 @@ a {
 .top{
   font-size: 10px;
 }
-/*--------------------------------------*/
+
+/*jumbotron*/
 
 .jumbotron {
   background-image: url(../images/coverphoto.jpg);
@@ -48,15 +49,12 @@ a {
 font-size: xx-large;
 }
 
-#about {
-  background-color:
-}
 
 #testimonials {
   margin-top: 10px;
 }
 
-/*-----------------------------------------*/
+/*footer*/
 .footer {
   background-color: #1FAD9F;
   color: #ECEFF4;
@@ -64,12 +62,3 @@ font-size: xx-large;
   width: 100%;
   margin-top: 5%;
 }
-
-
-/*LOG IN .EJS*/
-
-
-
-/*-----------------------------------*/
-
-/*SIGN UP EJS*/

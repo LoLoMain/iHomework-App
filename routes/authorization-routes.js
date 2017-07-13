@@ -25,7 +25,7 @@ router.post('/sign-up', (req, res, next)=>{
            return;
          }
          if(userFromDB){  //if username is taken send the user a message
-          //  res.locals.messageForDumbUsers = 'Sorry that Username is taken';
+          //  res.locals.messageForUsers = 'Sorry that Username is taken';
            res.render('authorization-views/sign-up-view.ejs');
            return;
          }

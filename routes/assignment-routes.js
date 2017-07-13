@@ -22,21 +22,6 @@ router.get('/classes/:Id/newassignment', (req, res, next)=>{
 
 });
 
-// router.get('/testtwilio', (req, res, next)=>{
-//   client.sendMessage({
-//     to: '+19736400894',
-//     from: 'TWILIO_PHONE_NUMBER',
-//     body: 'hello world!'
-//   },
-//   (err, message)=> {
-//     if (err){
-//     console.log(message.sid);
-//     next(err);
-//     return;
-//     }
-//   });
-// });
-
 // ROUTE #2 -> receive that form submission and do database stuff
 router.post('/classes/:Id/newassignment', (req, res, next)=>{
     ClassModel.findById(
@@ -56,9 +41,8 @@ router.post('/classes/:Id/newassignment', (req, res, next)=>{
 
         });
 
-        console.log('🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐🦐');
         console.log(newAssignment);
-        
+
         // Adding the Assignment to assignment array in class model
         ClassInfo.assignment.push(newAssignment);
         // Save Class with New Assignment
@@ -83,7 +67,7 @@ router.get('/classes/:Id/assignmentdetails/:assid', (req, res, next)=>{
       next(err);
       return;
       }
-        console.log('🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟🍟');
+        console.log(ClassInfo);
         res.locals.ClassInfo = ClassInfo;
         res.render('user-views/assignment-details-view.ejs');
       });
@@ -122,7 +106,7 @@ router.post('/classes/:Id/assignmentdetails/:assid/edit',(req,res, next)=>{
           // dollar sign means "the ones you matched in the criteria"
       },
 
-    (err, ClassInfo) => {         //3rd Argument -> callback!
+    (err, ClassInfo) => { //3rd Argument -> callback!
       if (err){
       next(err);
       return;
